@@ -155,7 +155,7 @@ def argparser():
                      )
     argp.add_argument('-f', '--format'
                      ,help      = 'Input format - default is JSON'
-                     ,metavar   = 'FILE'
+                     ,metavar   = 'FORMAT'
                      ,default   = 'JSON'
                      )
     argp.add_argument('query'
