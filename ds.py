@@ -29,13 +29,15 @@ grammar = re.compile(r"""/(?:
 
 field_type_regex = re.compile(r'^<(?P<type>[^>]+)>.*$', re.U)
 
-type_map = {'int': int,
-            'integer': int,
-            'bool': bool,
-            'boolean': bool,
-            'str': str,
-            'string': str,
-            'float': float}
+type_map = {'int': (int,),
+            'integer': (int,),
+            'bool': (bool,),
+            'boolean': (bool,),
+            'str': (str, unicode),
+            'string': (str, unicode),
+            'float': (float, ),
+            'list': (list, tuple),
+            'dict': (dict,)}
 
 
 class QueryParseException(Exception):
@@ -51,7 +53,9 @@ def iterate(iterable):
         it = enumerate(iterable)
 
     for index, value in it:
-        yield str(index), value
+        if type(index) == int:
+            index = str(index)
+        yield index, value
 
 
 def is_iterable(obj):
@@ -92,7 +96,7 @@ def type_check(value, type_name):
     if not type_name:
         return True
 
-    return (type(value) == type_map.get(type_name)
+    return (type(value) in type_map.get(type_name, tuple())
             or value.__class__.__name__ == type_name)
 
 
@@ -183,7 +187,7 @@ def __main__():
     d = load(args['input'])
 
     for result in select(d, args['query']):
-        args['output'].write('{0}\n'.format(result))
+        args['output'].write('{0}\n'.format(result.encode('utf-8')))
 
 
 if __name__ == '__main__':
