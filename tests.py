@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from ds import select, parse_query
 from unittest import TestCase, main
 
@@ -41,6 +42,9 @@ class SelectTestCase(TestCase):
 
     def test_type_index(self):
         self.assertEqual(select(d2, '/<list>/2'), ['mnbv'])
+
+    def test_unicode(self):
+        self.assertEqual(select({"á": [1, 2], "b": "cé"}, '/b'), ['cé'])
 
 
 if __name__ == '__main__':
