@@ -33,6 +33,7 @@ c
 
 # using pickle as input
 $ ds -t pickle -i file.pickle /query
+```
 
 ### Installation
 
