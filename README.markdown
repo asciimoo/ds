@@ -24,8 +24,6 @@ select(data, '/<str>a')  # ['z']
 select(data, '/ba')  # [4.0, True]
 ```
 
-see `ds --help` for command line usage
-
 ```bash
 # by default ds accepts JSON format from standard input
 $ echo '{"a": [1, 2], "b": "c"}' | ds /b
@@ -34,6 +32,8 @@ c
 # using pickle as input
 $ ds -t pickle -i file.pickle /query
 ```
+
+see `ds --help` for command line usage
 
 ### Installation
 
