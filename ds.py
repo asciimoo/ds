@@ -22,6 +22,13 @@ except:
 import re
 from collections import Iterable
 
+from sys import version_info
+IS_PY3 = version_info[0] == 3
+
+if IS_PY3:
+    unicode = str
+
+
 grammar = re.compile(r"""/(?:
 ([^/"]+)|
 "(.+)"
