@@ -31,6 +31,10 @@ c
 
 # using pickle as input
 $ ds -t pickle -i file.pickle /query
+
+# wikipedia search results
+$ curl 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=python' | ds '/1/<str>'
+
 ```
 
 see `ds --help` for command line usage
