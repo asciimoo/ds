@@ -13,7 +13,7 @@ setup(
     py_modules = ['ds'],
     packages = find_packages(),
     install_requires = [],
-    download_url = 'https://github.com/asciimoo/dataquery/tarball/master',
+    download_url = 'https://github.com/asciimoo/ds/tarball/master',
     entry_points={
         "console_scripts": ["ds=ds:__main__"]
     },
